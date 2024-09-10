@@ -10,10 +10,10 @@ jobs:
       - name: Install cowsays
         run: sudo apt-get install cowsay -y
       - name: Execute cowsay
-        run: cowsay -f dragon "Run for cover, I am dragon" >> dragon.txt
+        run: cowsay -f lion "Run for cover, I am lion" >> lion.txt
       - name: Test File exist
-        run: grep -i "dragon" dragon.txt
+        run: grep -i "lion" lion.txt
       - name: Read File
-        run: cat dragon.txt
+        run: cat lion.txt
       - name: List Repo Files
         run: ls -ltra
