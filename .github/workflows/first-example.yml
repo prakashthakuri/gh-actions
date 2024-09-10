@@ -13,4 +13,41 @@ jobs:
         run: ls
       - name: Read File
         run: cat README.md
+      - name: Upload the Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: my-artifact
+          path: README.md
+        
+  second_job:
+    needs: first_job
+    runs-on: ubuntu-latest
+    steps:
+            - name: Download the Artifact
+              uses: actions/upload-artifact@v4
+              with:
+                name: my-artifact
+                path: README.md
+            - name: Checkout Repo
+              uses: actions/checkout@v4
+            - name: Welcome message
+              run: echo "My first Github Actions Job"
+            - name: List files
+              run: ls
+            - name: Read File
+              run: cat README.md
+  third_job:
+    needs: [first_job, second_job]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+      - name: Welcome message
+        run: echo "My first Github Actions Job"
+      - name: List files
+        run: ls
+      - name: Read File
+        run: cat README.md
+              
+        
   
