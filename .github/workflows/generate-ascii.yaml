@@ -8,7 +8,8 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
       - name: List Repo files
-        uses: ls -ltra
+        run: ls -ltra
+        
       - name: Execute ascii
         run: 
             chmod +x ascii-script.sh
